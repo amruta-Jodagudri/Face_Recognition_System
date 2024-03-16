@@ -1,12 +1,13 @@
-from tkinter import*
+from tkinter import *
 from tkinter import ttk
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
+from student import student
 
-class Face_Recognition_System:
-    def __init__(self,root):
-        self.root=root
+class FaceRecognitionSystem:
+    def __init__(self, root):
+        self.root = root
         self.root.geometry("1530x750+0+0")
-        self.root.title("Face Recgnition System")
+        self.root.title("Face Recognition System")
 
         # first Image
         img1=Image.open(r"C:\Users\PC\OneDrive\Desktop\Python-Face Recognition System\College Images\image1.jpg")
@@ -52,10 +53,10 @@ class Face_Recognition_System:
         img5 = img5.resize((180,180))
         self.photoimg5=ImageTk.PhotoImage(img5)
 
-        b1=Button(bg_img,image=self.photoimg5,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg5,command=self.student_details ,cursor="hand2")
         b1.place(x=140,y=80,width=180,height=180)
 
-        b1_1=Button(bg_img,text="STUDENT DETAILS",cursor="hand2",font=("times new roman",13,"bold"),bg="skyblue",fg="red")
+        b1_1=Button(bg_img,text="STUDENT DETAILS",command=self.student_details ,cursor="hand2",font=("times new roman",13,"bold"),bg="skyblue",fg="red")
         b1_1.place(x=140,y=260,width=180,height=40)
 
 
@@ -137,13 +138,15 @@ class Face_Recognition_System:
         b8_1=Button(bg_img,text="EXIT",cursor="hand2",font=("times new roman",15,"bold"),bg="skyblue",fg="red")
         b8_1.place(x=1040,y=510,width=180,height=40)
 
+    # function
+    def student_details(self):
+        self.new_window = Toplevel(self.root)
+        self.app = student(self.new_window)
+
 if __name__ == "__main__":
-    root=Tk()
-    obj=Face_Recognition_System(root)
+    root = Tk()
+    obj = FaceRecognitionSystem(root)
     root.mainloop()
-
-
-
 
 
 
